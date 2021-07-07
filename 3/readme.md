@@ -21,3 +21,18 @@
 >>> a
 [2, 6, 10, 14, 18]
 ```
+
+- 딕셔너리 
+```python
+>>> a = {}
+>>> for key, value in original.items():
+...     a[key] = value
+```
+
+- 딕셔너리 컴프리헨션
+```python
+>>> a = {key: value for key, value in original.items()}
+```
+
+- 컴프리헨션은 가독성이 좋은 편이지만 가독성이 떨어뜨릴 수 있음
+- 대체로 표현식은 2개를 넘지 않아야 한다.
