@@ -319,3 +319,25 @@ c = MyClass()
 - 이처럼 아무 역할을 하지 않는 pass를 지정하면, 앞서 발생한 인텐트 오류 같은 불필요한 오류를 방지할 수 있다.
 - 이렇게 pass는 먼저 목업 mockup 인터페이스부터 구현한 다음에 추후 구현을 진행할 수 있게 한다.
 - 코딩 테스트 시 무척 유용
+
+## locals
+- locals()는 로컬 심볼 테이블 딕셔너리를 가져오는 메소드로 업데이트 또한 가능.
+- 우선 로컬에 선언된 모든 변수를 조회할 수 있는 강력한 명령이므로 디버깅에 많은 도움이 된다.
+- 특히 로컬 스코프에 제한해 정보를 조회할 수 있기 때문에 <br>
+  클래스의 특정 메소드 내부에서나 함수 내부의 로컬 정보를 조회해 <br>
+  잘못 선언한 부분이 없는지 확인하는 용도로 활용
+  
+- 변수명을 일일이 찾아낼 필요 없이 로컬 스코프에 정의된 모두 변수를 출력하기 때문에 편리.
+```python
+import pprint
+pprint.pprint(locals())
+------------------------------------
+'a': ['A', 'B'],
+ 'c': <__main__.MyClass object at 0x7fd9d814a9a0>,
+ 'fruit': 'Apple',
+ 'idx': 1,
+ 'pprint': <module 'pprint' from '/Library/Frameworks/Python.framework/Versions/3.9/lib/python3.9/pprint.py'>,
+ 'sys': <module 'sys' (built-in)>}
+```
+- pprint로 출력하게 되면 보기 좋게 줄바꿈 처리를 해주기 때문에 가독성 높아짐.
+- 클래스 메소드 내부의 모든 로컬 변수를 출력. 디버깅에 많은 도움.
