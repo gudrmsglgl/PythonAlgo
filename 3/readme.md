@@ -233,3 +233,47 @@ type(int(5/3))
 divmod(5,3)
 (1, 2)
 ```
+
+## print
+- 디버깅을 할 때 가장 자주 쓰는 명령은 바로 print()
+- 정답 제출시에는 print() 조차 보여주지 않는 경우가 있으니 유의.
+- 가장 쉽게 값을 출력하는 방법은 콤마(,)로 구분하는 것.
+
+```python
+print('A1', 'B2')
+A1 B2
+
+print('A1', 'B2', sep="||")
+A1||B2
+```
+
+- print() 함수가 항상 줄바꿈을 하기 때문에 긴 루프의 값을 반복적으로 출력하면 디버깅 하기가 어려움
+- 이 경우 end 파라미터를 공백으로 처리하여 줄바꿈을 하지 않도록 제한할 수 있다.
+```python
+>>> print('aa', end='')
+... print('bb')
+aabb
+```
+
+- 리스트를 처리할 때
+```python
+a = ['A', 'B']
+print(' '.join(a))
+A B
+print('^^'.join(a))
+A^^B
+```
+
+- format 을 활용한 print
+```python
+print('{0}: {1}'.format(idx + 1, fruit))
+2: Apple
+--------------------------------------------
+print('{}: {}'.format(idx + 1, fruit))
+2: Apple
+--------------------------------------------
+
+// f-string 3.6+ 에서만 지원.
+print(f'{idx +1}: {fruit}')
+2: Apple
+```
