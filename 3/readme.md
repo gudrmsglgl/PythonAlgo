@@ -277,3 +277,45 @@ print('{}: {}'.format(idx + 1, fruit))
 print(f'{idx +1}: {fruit}')
 2: Apple
 ```
+
+## pass
+- 일단 코드의 전체 골격을 잡아 놓고 내부에서 처리할 내용은 차근차근 생각하며 만들겠다는 의도로 다음과 같이 코딩하는 경우가 있다.
+```python
+class MyClass(object):
+    def method_a(self):
+    
+    def method_b(self):
+        print("Method B")
+
+c = MyClass()
+```
+- 이 클래스는 실행이 되지 않는다. 다음과 같이 인텐트 오류가 발생.
+```python
+ def method_b(self):
+    ^
+IndentationError: expected an indented block
+```
+
+- 이 문제는 method_a() 가 아무런 처리를 하지 않았기 때문에 엉뚱하게 method_b()에서 오류.
+- 이런 오류 생각보다 처리하기 번거롭다.
+- pass는 이런 오류를 막는 역할을 한다.
+- 다음과 같이 pass를 method_a()에 삽입해 간단히 처리할 수 있다.
+
+```python
+class MyClass(object):
+    def method_a(self):
+      # 여기에 pass 추가
+        pass
+    
+    def method_b(self):
+        print("Method B")
+
+c = MyClass()
+
+<__main__.MyClass object at 0x7fd9d814a9a0>
+```
+
+- 파이썬에서 **pass는 널 연산 Null Operation** 으로 아무것도 하지 않는 기능.
+- 이처럼 아무 역할을 하지 않는 pass를 지정하면, 앞서 발생한 인텐트 오류 같은 불필요한 오류를 방지할 수 있다.
+- 이렇게 pass는 먼저 목업 mockup 인터페이스부터 구현한 다음에 추후 구현을 진행할 수 있게 한다.
+- 코딩 테스트 시 무척 유용
