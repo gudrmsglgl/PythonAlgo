@@ -341,3 +341,48 @@ pprint.pprint(locals())
 ```
 - pprint로 출력하게 되면 보기 좋게 줄바꿈 처리를 해주기 때문에 가독성 높아짐.
 - 클래스 메소드 내부의 모든 로컬 변수를 출력. 디버깅에 많은 도움.
+
+## 변수명과 주석
+```python
+def numMatchingSubseq(self, S: str, words: List[str]) -> int:
+    a = 0
+
+    for b in words:
+        c = 0
+        for i in range(len(b)):
+            d = S[c:].find(b[i])
+            if d < 0:
+                a -= 1
+                break
+            else:
+                c += d + 1
+        a += 1
+    
+    return a
+```
+- 위 코드는 변수명이 무엇을 의미하는지를 이해하기 어려움
+- 알고리즘에 대한 주석이 없어서 어떻게 동작하는지 파악하기도 쉽지 않다.
+- 주석은 논의가 많은 주제이지만 달거라면 상세히 달자.
+```python
+def numMatchingSubseq(self, S: str, words: List[str]) -> int:
+    matched_count = 0
+
+    for word in words:
+        pos = 0
+        for i in range(len(word)):
+            # Find matching position for each character.
+            found_pos = S[pos:].find(word[i])
+            if found_pos < 0:
+                matched_count -= 1
+                break
+            else:   # If found, take step position forward.
+                pos += found_pos + 1
+        matched_count += 1
+    
+    return matched_count
+```
+- 파이썬에서는 간단한 주석을 부여하는 편이 훨씬 더 가독성이 높아 보인다.
+- 변수명도 마찬가지다.
+- 의미 없는 이름보다는 각각의 의미를 부여해 작명했고 파이썬의 PEP8 문서 기준에 따라 모두 스네이크 작성.
+- 주석은 한글로 달아도 무방하지만 영어로 작성하는 것에도 부담이 없어야 한다.
+- 실제 코딩 테스트 시에는 부가 설명을 덧붙일 수 있는게 아니기 때문에 항상 코드에 상세한 주석을 달아두는 편이 좋다.
